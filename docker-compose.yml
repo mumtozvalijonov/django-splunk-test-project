@@ -22,3 +22,14 @@ services:
     volumes:
       - ./data/splunk/var:/opt/splunk/var
       - ./data/splunk/etc:/opt/splunk/etc
+
+  redis:
+    image: redis:6-alpine
+    env_file:
+      - .env
+    ports: 
+      - 6379:6379
+    volumes:
+      - ./data/redis:/data
+    environment:
+      REDIS_PASSWORD: ${REDIS_DEFAULT_PASSWORD}

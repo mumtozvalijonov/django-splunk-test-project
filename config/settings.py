@@ -119,3 +119,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SPLUNK_USERNAME = os.environ['SPLUNK_USERNAME']
 SPLUNK_PASSWORD = os.environ['SPLUNK_PASSWORD']
 SPLUNK_HOST = os.environ['SPLUNK_HOST']
+
+# REDIS
+REDIS_HOST = os.environ['REDIS_HOST']
+REDIS_PORT = os.environ['REDIS_PORT']
+REDIS_DB = os.environ['REDIS_DB']
+
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}'
