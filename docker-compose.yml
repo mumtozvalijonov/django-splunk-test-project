@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    env_file:
+      - .env
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  splunk:
+    image: splunk/splunk
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+      - 8089:8089
+    volumes:
+      - ./data/splunk/var:/opt/splunk/var
+      - ./data/splunk/etc:/opt/splunk/etc
